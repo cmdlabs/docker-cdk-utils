@@ -1,0 +1,61 @@
+stages:
+  - build
+  - test
+  - scan
+  - push
+  - pushLatest
+  - publish
+
+build:
+  stage: build
+  tags:
+    - cmd
+  script:
+    - make build
+
+test:
+  stage: test
+  tags:
+    - cmd
+  script:
+    - make test
+
+scan:
+  stage: scan
+  tags:
+    - cmd
+  script:
+    - make scan
+  after_script:
+    - make scanClean
+
+push:
+  stage: push
+  tags:
+    - cmd
+  only:
+    - master
+    - tags
+  script:
+    - make push
+
+pushLatest:
+  stage: pushLatest
+  tags:
+    - cmd
+  only:
+    - master
+  script:
+    - make pushLatest
+
+publish:
+  stage: publish
+  tags:
+    - cmd
+  script:
+    - make publish
+  variables:
+    GIT_STRATEGY: clone
+  only:
+    - master
+    - tags
