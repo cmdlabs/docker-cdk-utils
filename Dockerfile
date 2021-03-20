@@ -1,7 +1,7 @@
 FROM alpine:3.13
 
-ENV AWS_CDK_VERSION=1.87.1
-ENV AWSCLI_VERSION=1.19.7
+ENV AWS_CDK_VERSION=1.94.1
+ENV AWSCLI_VERSION=1.19.33
 
 RUN apk -v --no-cache --update add \
         nodejs \
@@ -18,6 +18,7 @@ RUN apk -v --no-cache --update add \
         zip \
         git \
         openssh-client \
+        jq \
         && \
     update-ca-certificates && \
     npm install -g aws-cdk@${AWS_CDK_VERSION} && \

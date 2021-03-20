@@ -1,6 +1,6 @@
 IMAGE_NAME ?= cmdlabs/cdk-utils
 
-RELEASE_VERSION = 1.0.0
+RELEASE_VERSION = 1.1.0
 BUILD_VERSION ?= testing
 
 ifdef CI_COMMIT_REF_NAME
